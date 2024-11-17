@@ -6,8 +6,10 @@ import time
 from io import BytesIO
 from PIL import Image
 import base64
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Load YOLO model
 labelsPath = 'D:/object detection/backend/yolo-coco/coco.names'
@@ -92,4 +94,4 @@ def predict():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
